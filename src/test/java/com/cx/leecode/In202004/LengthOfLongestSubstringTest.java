@@ -56,7 +56,7 @@ public class LengthOfLongestSubstringTest extends TestCase {
      * @param expect 期望最大长度
      */
     private void printMessage(String s, int len, int expect) {
-        System.out.println("字符串： " + s + " | 最大长度为：" + len);
-        assertEquals("最大长度不正确",expect, len);
+        System.out.println("字符串： " + s + " | 无重复字符串最大长度为：" + len);
+        assertEquals("无重复字符串最大长度不正确",expect, len);
     }
 }
