@@ -1,5 +1,8 @@
 package com.cx.leecode.In202005;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 罗马数字包含以下七种字符： I， V， X， L，C，D 和 M。
  *
@@ -48,7 +51,50 @@ package com.cx.leecode.In202005;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class IntToRoman {
+    static Map<Integer,String> map = new HashMap<>();
+    static {
+        map.put(1,"I");
+        map.put(4,"IV");
+        map.put(5,"V");
+        map.put(9,"IX");
+        map.put(10,"X");
+        map.put(40,"XL");
+        map.put(50,"L");
+        map.put(90,"XC");
+        map.put(100,"C");
+        map.put(400,"CD");
+        map.put(500,"D");
+        map.put(900,"CM");
+        map.put(1000,"M");
+    }
+
     public String intToRoman(int num) {
-        return null;
+
+        StringBuilder sb = new StringBuilder();
+        int bei = 1;
+        while (num != 0){
+            int index = num % 10;
+            sb.insert(0, getLuoma(index , bei));
+            num /= 10;
+            bei *= 10;
+        }
+        return sb.toString();
+    }
+
+    private String getLuoma(int x, int bei){
+        if (x == 4 || x == 9){
+            return map.get(x * bei);
+        }
+        StringBuilder sb = new StringBuilder();
+        while (x > 0){
+            if (x >= 5){
+                sb.append(map.get(5 * bei));
+                x = x - 5;
+            }else {
+                sb.append(map.get(bei));
+                x--;
+            }
+        }
+        return sb.toString();
     }
 }
