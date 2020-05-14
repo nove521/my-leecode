@@ -24,6 +24,22 @@ package com.cx.leecode.In202005;
  */
 public class LongestCommonPrefix {
     public String longestCommonPrefix(String[] strs) {
-        return null;
+        int len = strs.length;
+        StringBuilder sb = new StringBuilder();
+        int index = 0;
+        while (len > 0 && index < strs[0].length()){
+            char c = strs[0].length() > 0 ? strs[0].charAt(index) : 0;
+            for (int i = 0; i < len; i++) {
+                if (strs[i].length() <= index){
+                    return sb.toString();
+                }
+                if (strs[i].charAt(index) != c) {
+                    return sb.toString();
+                }
+            }
+            sb.append(strs[0].charAt(index));
+            index ++;
+        }
+        return sb.toString();
     }
 }
