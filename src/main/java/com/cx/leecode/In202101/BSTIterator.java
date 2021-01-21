@@ -11,6 +11,7 @@ class BSTIterator {
         bst(root);
     }
 
+
     private void bst(TreeNode node) {
         if (node != null) {
             stack.push(node);
